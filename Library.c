@@ -91,3 +91,17 @@ void recieveLoanFromAPerson(Library* library, int idPerson, int idLoan){
     addNewMaterial(library, returnedMaterial);
 }
 
+void printlistOfMaterial(Library* library){
+    printf("List of materials available: \n");
+    for (int i = 0; i < library->amountOfMaterials; ++i) {
+        printMaterial(library->materials[i]);
+    }
+}
+
+void printlistOfPeopleAndThierLoans(Library* library){
+    printf("List of people with thier respective loans: \n");
+    for (int i = 0; i < library->amountOfClients; ++i) {
+        printPerson(library->clients[i]);
+    }
+}
+

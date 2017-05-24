@@ -32,4 +32,7 @@ void recieveLoanFromAPerson(Library* library, int idPerson, int idLoan);
 Material* getMaterial(Library* library, int materialId);
 Person* getPerson(Library* library,int idOfPerson);
 
+void printlistOfMaterial(Library* library);
+void printlistOfPeopleAndThierLoans(Library* library);
+
 #endif //EJERCICIO2_LIBRARY_H

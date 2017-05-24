@@ -73,7 +73,7 @@ void printPerson(Person* person){
     }
     printf("loans: \n");
     if(person->amountOfLoans == 0){
-        printf("Empty.");
+        printf("Empty.\n");
     }
     for (int i = 0; i < person->amountOfLoans; i++) {
         printLoan(person->loans[i]);
