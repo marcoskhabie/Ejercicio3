@@ -6,6 +6,7 @@
 #define EJERCICIO2_LIBRARY_H
 
 #include "Material.h"
+#include "Person.h"
 
 typedef struct library{
     Material** materials;
