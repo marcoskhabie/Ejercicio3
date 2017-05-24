@@ -8,14 +8,14 @@
 #include "Material.h"
 
 typedef struct loan{
-    int id;
+    int idOfLoan;
     Material* material;
     char* dateOfLoan;
     char* dateOfReturn;
 
 }Loan;
 
-Loan* createLoan(Material* material, int id);
+Loan* createLoan(Material* material, int idOfLoan);
 void destroyLoan(Loan* loan);
 
 void printLoan(Loan* loan);

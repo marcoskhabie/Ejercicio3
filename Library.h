@@ -24,8 +24,12 @@ void destroyLibrary(Library* library);
 void addNewMaterial(Library* library, Material* material);
 void addNewPerson(Library* library, Person* person);
 
-void removeMaterial(Library* library, int codeOfMaterial);
+int removeMaterial(Library* library, int codeOfMaterial);
 
 void makeLoanOfMaterialToPerson(Library* library, int idMaterial, int idPerson);
+void recieveLoanFromAPerson(Library* library, int idPerson, int idLoan);
+
+Material* getMaterial(Library* library, int materialId);
+Person* getPerson(Library* library,int idOfPerson);
 
 #endif //EJERCICIO2_LIBRARY_H
