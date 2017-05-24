@@ -20,9 +20,9 @@ typedef struct person{  
     double debt;   }Person;
 
 
-      Person* createPerson(int typeOfPerson, char* name, char* surname, int amountOfLoans, double debt, Loan** loans,int maxCapacityOfLoans ); 
+      Person* createPerson(int typeOfPerson, char* name, char* surname, int amountOfLoans, double debt, Loan** loans,int initialCapacityOfLoans ); 
     void makeLoan(Material* material, Person* person);
 
-    void returnLoan(Person* person, int idLoan);
+    Material* returnLoan(Person* person, int idLoan);
     void destroyPerson(Person* person);
 #endif //EJERCICIO2_PERSON_H
