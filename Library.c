@@ -30,7 +30,7 @@ void destroyLibrary(Library* library){
 
 void addNewMaterial(Library* library, Material* material){
     if(library->amountOfMaterials == library->maxCapacityOfMaterials){
-        library->materials = realloc(library->materials, sizeof(Library*) * library->maxCapacityOfMaterials* 2);
+        library->materials = realloc(library->materials, sizeof(Material*) * library->maxCapacityOfMaterials* 2);
         library->maxCapacityOfMaterials = library->maxCapacityOfMaterials * 2;
     }
     library->materials[library->amountOfMaterials] = material;
@@ -38,9 +38,25 @@ void addNewMaterial(Library* library, Material* material){
 }
 
 void addNewPerson(Library* library, Person* person){
-
+    if(library->amountOfClients == library->maxCapacityOfClients){
+        library->clients = realloc(library->clients, sizeof(Person*) * library->maxCapacityOfClients*2);
+        library->maxCapacityOfClients = library->maxCapacityOfClients *2;
+    }
+    library->clients[library->amountOfClients] = person;
+    library->amountOfClients++;
 }
 
-void removeMaterial(Library* library, int idOfMaterial);
+void removeMaterial(Library* library, int codeOfMaterial){
+    for (int i = 0; i < library->amountOfMaterials; i++) {
+        if(library->materials[i]->code == codeOfMaterial){
+            for (; i < library->amountOfMaterials - 1; i++) {
+                library->materials[i] = library->materials[i + 1];
+            }
+            library->amountOfMaterials--;
+        }
+    }
+}
 
-void makeLoanOfMaterialToPerson(Library* library, int idMaterial, int idPerson);
+void makeLoanOfMaterialToPerson(Library* library, int idMaterial, int idPerson){
+
+}

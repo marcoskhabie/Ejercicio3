@@ -24,7 +24,7 @@ void destroyLibrary(Library* library);
 void addNewMaterial(Library* library, Material* material);
 void addNewPerson(Library* library, Person* person);
 
-void removeMaterial(Library* library, int idOfMaterial);
+void removeMaterial(Library* library, int codeOfMaterial);
 
 void makeLoanOfMaterialToPerson(Library* library, int idMaterial, int idPerson);
 
