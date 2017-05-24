@@ -3,5 +3,5 @@ project(Ejercicio2)
 
 set(CMAKE_CXX_STANDARD 98)
 
-set(SOURCE_FILES Library.c Library.h Material.c Material.h Person.c Person.h Borrowing.c Borrowing.h)
+set(SOURCE_FILES Library.c Library.h Material.c Material.h Person.c Person.h Loan.c Loan.h)
 add_executable(Ejercicio2 ${SOURCE_FILES})
