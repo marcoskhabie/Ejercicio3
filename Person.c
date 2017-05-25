@@ -6,15 +6,16 @@
 #include "Person.h"
 
 
-  Person* createPerson(int typeOfPerson, char* name, char* surname,int id,int initialCapacityOfLoans){
+  Person* createPerson(int typeOfPerson, char* name, char* surname,int id,int numberOfEmployee, int enrollmentNumber,int initialCapacityOfLoans){
 
     Person* newPerson = malloc(sizeof(Person));
 
     newPerson->typeOfPerson=typeOfPerson;
     newPerson->id = id;
     newPerson->amountOfLoans= 0;
-    newPerson->debt= 0;
     newPerson->maxCapacityOfLoans=initialCapacityOfLoans;
+    newPerson->numberOfEmployee = numberOfEmployee;
+    newPerson->enrollmentNumber = enrollmentNumber;
 
 
     newPerson->name= malloc(sizeof(char)*strlen(name)+1);
@@ -67,9 +68,10 @@ void printPerson(Person* person){
     printf("id: %d", person->id);
     if(person->typeOfPerson == 0){
         printf("(student), ");
+        printf("enrollmentNumber: %d, ", person->enrollmentNumber);
     }
     else {
-        printf("(teacher), ");
+        printf("(teacher), numberOfEmployee: %d, ", person->numberOfEmployee);
     }
     printf("loans: \n");
     if(person->amountOfLoans == 0){

@@ -21,7 +21,19 @@ Person* getValuesOfNewPerson(){
     scanf("%d", &id);
     printf("Are you a teacher(1) or a student(0)? ");
     scanf("%d",&typeOfPerson);
-    return createPerson(typeOfPerson,name,surname,id,10);
+    if(typeOfPerson == 1){
+        int numberOfEmployee;
+        printf("Enter your employee number: ");
+        scanf("%d", &numberOfEmployee);
+        return createPerson(typeOfPerson,name,surname,id,numberOfEmployee,0,10);
+    }
+    else{
+        int enrollmentNumber;
+        printf("Enter your enrollment number: ");
+        scanf("%d", &enrollmentNumber);
+        return createPerson(typeOfPerson,name,surname,id,0,enrollmentNumber,10);
+
+    }
 }
 
 Material* getValuesOfNewMaterial(){
@@ -84,8 +96,8 @@ int main() {
     Material* magazine = createMaterial(0,15, "John", "Nat geo",2016, "");
 
 
-    Person* teacher = createPerson(1,"Carlos","Perez",40269313,10);
-    Person* student = createPerson(0, "Pablo", "Verdeo", 23042143, 10);
+    Person* teacher = createPerson(1,"Carlos","Perez",40269313,3001,0,10);
+    Person* student = createPerson(0, "Pablo", "Verdeo", 23042143,0,12043,10);
 
     Library* library = createLibrary(10);
 
