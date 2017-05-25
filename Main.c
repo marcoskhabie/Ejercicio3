@@ -2,9 +2,81 @@
 // Created by Agustin Bettati  on 24/5/17.
 //
 
+#include <printf.h>
 #include "Material.h"
 #include "Person.h"
 #include "Library.h"
+
+Person* getValuesOfNewPerson(){
+    int typeOfPerson;
+    char name[20];
+    char surname[20];
+    int id;
+    printf("--Creating new Person--\n");
+    printf("Enter your name: ");
+    scanf("%s", name);
+    printf("Enter your surname: ");
+    scanf("%s", surname);
+    printf("Enter your id number: ");
+    scanf("%d", &id);
+    printf("Are you a teacher(1) or a student(0)? ");
+    scanf("%d",&typeOfPerson);
+    return createPerson(typeOfPerson,name,surname,id,10);
+}
+
+Material* getValuesOfNewMaterial(){
+    int code;
+    int typeOfMaterial;
+    char author[20];
+    char title[20];
+    int year;
+    char editorial[20];
+    printf("--Creating new Material--\n");
+    printf("Enter code number: ");
+    scanf("%d", &code);
+    printf("Is it a book(1) or a magazine(0)?");
+    scanf("%d", &typeOfMaterial);
+    printf("Enter authors name: ");
+    scanf("%s", author);
+    printf("Enter the title: ");
+    scanf("%s", title);
+    printf("Enter year of creation: ");
+    scanf("%d",&year);
+    if(typeOfMaterial == 1){
+        printf("Enter the name of editorial: ");
+        scanf("%s", editorial);
+        return createMaterial(typeOfMaterial,code,author,title,year,editorial);
+    }
+    else{
+        return createMaterial(typeOfMaterial,code,author,title,year,"");
+    }
+}
+
+void askForValuesAndMakeLoan(Library* library){
+    int idOfPerson;
+    int idOfMaterial;
+
+    printf("Enter the id of the person: ");
+    scanf("%d", &idOfPerson);
+    printf("Enter the code of the material: ");
+    scanf("%d", &idOfMaterial);
+
+    makeLoanOfMaterialToPerson(library, idOfMaterial,idOfPerson);
+}
+
+void askForValuesAndReturnLoan(Library* library){
+    int idPerson;
+    int idLoan;
+
+    printf("Enter the id of the person: ");
+    scanf("%d", &idPerson);
+    printf("Enter the id of the loan to be returned: ");
+    scanf("%d", &idLoan);
+
+    recieveLoanFromAPerson(library,idPerson, idLoan);
+}
+
+
 
 int main() {
     Material* book1 = createMaterial(1,10,"Jorge", "Perdido en la selva",2012, "Johnson");
@@ -24,13 +96,49 @@ int main() {
     addNewPerson(library, teacher);
     addNewPerson(library, student);
 
-    makeLoanOfMaterialToPerson(library,10,40269313);
+    printf("\nBefore starting the system, some people and materials where added \nto make it easier to see its functionality. \n");
+    int action = -1;
+    do{
+        printf("Available operations:\n"
+                       " 1 - List of people with thier respective loans.\n"
+                       " 2 - List of available material.\n"
+                       " 3 - Add new person.\n"
+                       " 4 - Add new material.\n"
+                       " 5 - Person asks for a loan.\n"
+                       " 6 - Person returns a loan.\n"
+                       " 7 - Close system.\n"
+                       "Enter your desired operation: ");
+        scanf("%d",&action);
+        printf("\n");
 
-    printlistOfPeopleAndThierLoans(library);
+        switch(action){
+            case 1:
+                printlistOfPeopleAndThierLoans(library);
+                break;
+            case 2:
+                printlistOfMaterial(library);
+                break;
+            case 3:
+                addNewPerson(library, getValuesOfNewPerson());
+                break;
+            case 4:
+                addNewMaterial(library, getValuesOfNewMaterial());
+                break;
+            case 5:
+                askForValuesAndMakeLoan(library);
+                break;
+            case 6:
+                askForValuesAndReturnLoan(library);
+                break;
+            case 7:
+                printf("Hope the system was useful!");
+                break;
+            default:
+                printf("Please enter a valid operation! \n");
+                break;
+        }
 
-    recieveLoanFromAPerson(library,40269313, 10);
-
-    printlistOfPeopleAndThierLoans(library);
+    } while(action != 7);
 
     return 0;
 }
