@@ -112,7 +112,7 @@ int main() {
     int action = -1;
     do{
         printf("Available operations:\n"
-                       " 1 - List of people with thier respective loans.\n"
+                       " 1 - List of people with their respective loans.\n"
                        " 2 - List of available material.\n"
                        " 3 - Add new person.\n"
                        " 4 - Add new material.\n"
