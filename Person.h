@@ -17,13 +17,13 @@ typedef struct person{  
     Loan** loans;
     int amountOfLoans; 
     int maxCapacityOfLoans;
-   // double debt;
+
     int numberOfEmployee;
     int enrollmentNumber;
 }Person;
 
-
-  Person* createPerson(int typeOfPerson, char* name, char* surname,int id,int numberOfEmployee, int enrollmentNumber,int initialCapacityOfLoans);
+Person* createStudent(char* name, char* surname,int id,int enrollmentNumber,int initialCapacityOfLoans);
+Person* createTeacher(char* name, char* surname,int id,int numberOfEmployee, int initialCapacityOfLoans);
 void makeLoan(Material* material, Person* person);
 
 Material* returnLoan(Person* person, int idLoan);

@@ -6,16 +6,36 @@
 #include "Person.h"
 
 
-  Person* createPerson(int typeOfPerson, char* name, char* surname,int id,int numberOfEmployee, int enrollmentNumber,int initialCapacityOfLoans){
-
+Person* createStudent(char* name, char* surname,int id,int enrollmentNumber,int initialCapacityOfLoans){
     Person* newPerson = malloc(sizeof(Person));
 
-    newPerson->typeOfPerson=typeOfPerson;
+    newPerson->typeOfPerson= 0;
+    newPerson->id = id;
+    newPerson->amountOfLoans= 0;
+    newPerson->maxCapacityOfLoans=initialCapacityOfLoans;
+    newPerson->numberOfEmployee = -1;
+    newPerson->enrollmentNumber = enrollmentNumber;
+
+
+    newPerson->name= malloc(sizeof(char)*strlen(name)+1);
+    newPerson->surname= malloc(sizeof(char)*strlen(surname)+1);
+
+    strcpy(newPerson->name,name);
+    strcpy(newPerson->surname,surname);
+
+    newPerson->loans= malloc(sizeof(Loan*)* initialCapacityOfLoans);
+
+    return newPerson;
+}
+Person* createTeacher(char* name, char* surname,int id,int numberOfEmployee, int initialCapacityOfLoans){
+    Person* newPerson = malloc(sizeof(Person));
+
+    newPerson->typeOfPerson=1;
     newPerson->id = id;
     newPerson->amountOfLoans= 0;
     newPerson->maxCapacityOfLoans=initialCapacityOfLoans;
     newPerson->numberOfEmployee = numberOfEmployee;
-    newPerson->enrollmentNumber = enrollmentNumber;
+    newPerson->enrollmentNumber = -1;
 
 
     newPerson->name= malloc(sizeof(char)*strlen(name)+1);

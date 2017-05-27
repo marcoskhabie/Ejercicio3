@@ -25,13 +25,13 @@ Person* getValuesOfNewPerson(){
         int numberOfEmployee;
         printf("Enter your employee number: ");
         scanf("%d", &numberOfEmployee);
-        return createPerson(typeOfPerson,name,surname,id,numberOfEmployee,0,10);
+        return createTeacher(name,surname,id,numberOfEmployee,10);
     }
     else{
         int enrollmentNumber;
         printf("Enter your enrollment number: ");
         scanf("%d", &enrollmentNumber);
-        return createPerson(typeOfPerson,name,surname,id,0,enrollmentNumber,10);
+        return createStudent(name,surname,id,enrollmentNumber,10);
 
     }
 }
@@ -57,10 +57,10 @@ Material* getValuesOfNewMaterial(){
     if(typeOfMaterial == 1){
         printf("Enter the name of editorial: ");
         scanf("%s", editorial);
-        return createMaterial(typeOfMaterial,code,author,title,year,editorial);
+        return createBook(code,author,title,year,editorial);
     }
     else{
-        return createMaterial(typeOfMaterial,code,author,title,year,"");
+        return createMagazine(code,author,title,year);
     }
 }
 
@@ -91,13 +91,13 @@ void askForValuesAndReturnLoan(Library* library){
 
 
 int main() {
-    Material* book1 = createMaterial(1,10,"Jorge", "Perdido en la selva",2012, "Johnson");
-    Material* book2 = createMaterial(1,8,"Carlos", "The return",1990, "Pearson");
-    Material* magazine = createMaterial(0,15, "John", "Nat geo",2016, "");
+    Material* book1 = createBook(10,"Jorge", "Perdido en la selva",2012, "Johnson");
+    Material* book2 = createBook(8,"Carlos", "The return",1990, "Pearson");
+    Material* magazine = createMagazine(15, "John", "Nat geo",2016);
 
 
-    Person* teacher = createPerson(1,"Carlos","Perez",40269313,3001,0,10);
-    Person* student = createPerson(0, "Pablo", "Verdeo", 23042143,0,12043,10);
+    Person* teacher = createTeacher("Carlos","Perez",40269313,3001,10);
+    Person* student = createStudent( "Pablo", "Verdeo", 23042143,12043,10);
 
     Library* library = createLibrary(10);
 

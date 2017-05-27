@@ -4,9 +4,10 @@
 
 #include <printf.h>
 #include "Material.h"
-Material* createMaterial(int typeOfMaterial,int  code, char* author,char* title,int year, char* editorial){
+
+Material* createBook(int code, char* author,char* title,int year, char* editorial){
     Material* newMaterial = malloc(sizeof(Material));
-    newMaterial->typeOfMaterial= typeOfMaterial;
+    newMaterial->typeOfMaterial= 1;
     newMaterial->code=code;
     newMaterial->year = year;
 
@@ -17,6 +18,21 @@ Material* createMaterial(int typeOfMaterial,int  code, char* author,char* title,
     strcpy(newMaterial->author,author);
     strcpy(newMaterial->title,title);
     strcpy(newMaterial->editorial,editorial);
+
+    return newMaterial;
+}
+Material* createMagazine(int code, char* author,char* title,int year){
+    Material* newMaterial = malloc(sizeof(Material));
+    newMaterial->typeOfMaterial= 0;
+    newMaterial->code=code;
+    newMaterial->year = year;
+
+    newMaterial->author= malloc(sizeof(char)* strlen(author)+1);
+    newMaterial->title= malloc(sizeof(char)* strlen(title)+1);
+    newMaterial->editorial= "";
+
+    strcpy(newMaterial->author,author);
+    strcpy(newMaterial->title,title);
 
     return newMaterial;
 }

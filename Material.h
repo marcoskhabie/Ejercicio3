@@ -19,7 +19,8 @@ typedef struct material{
 
 }Material;
 
-Material* createMaterial(int typeOfMaterial,int code, char* author,char* title,int year, char* editorial);
+Material* createBook(int code, char* author,char* title,int year, char* editorial);
+Material* createMagazine(int code, char* author,char* title,int year);
 void destroyMaterial(Material* material);
 void printMaterial(Material* material);
 #endif //EJERCICIO2_MATERIAL_H
